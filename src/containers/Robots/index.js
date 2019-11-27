@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
+import { createStructuredSelector } from 'reselect';
+
 import { injectReducer } from '../../utils/storeUtils';
 import * as actions from './actions';
 import reducer from './reducer';
 import { domain } from './constants';
 import { createKeySelector } from './selectors';
-import { createStructuredSelector } from 'reselect';
 
 
 const RobotsPage = props => {
   injectReducer(domain, reducer);
-  console.log(props)
-  const { status, activeRobots, getRobots } = props;
+  const { status, getRobots } = props;
   if (status === 'initial') getRobots('hello there');
   return (
     <div>
@@ -20,7 +20,6 @@ const RobotsPage = props => {
     </div>
   )
 };
-
 
 RobotsPage.propTypes = {
   status: PropTypes.string,
@@ -33,7 +32,6 @@ const mapStateToProps = state => createStructuredSelector({
   activeRobots: createKeySelector('activeRobots')(state)
 });
 
-// const mapDispatchToProps = mapDispatch(actions);
 const mapDispatchToProps = { ...actions }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RobotsPage);

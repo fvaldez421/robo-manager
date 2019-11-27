@@ -1,14 +1,11 @@
 import { combineReducers } from 'redux';
-import { withStore } from './store';
+import { rootReducer, withStore } from './store';
 
 
-const createReducer = reducers => combineReducers({ ...reducers });
 
 const updateReducers = store => (key, reducer) => {
   store.asyncReducers[key] = reducer;
-  const rootReducer = createReducer(store.asyncReducers);
-  store.replaceReducer(rootReducer);
-  return store.replaceReducer(rootReducer);
+  return store.replaceReducer(combineReducers(store.asyncReducers));
 }
 
 export const injectReducer = withStore(updateReducers);

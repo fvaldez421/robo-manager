@@ -12,7 +12,7 @@ export const makeParams = obj => {
 
 export const get = async (url = '', success = _ => null, err = _ => null) => {
   const { status, ...rest } = await axios.get(url);
-  if (status == 200) return success(rest);
+  if (status === 200) return success(rest);
   else {
     console.log({ err: rest })
     err(rest);

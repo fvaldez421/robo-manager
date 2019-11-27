@@ -12,7 +12,6 @@ export default (state = initialState, action) => {
     case LOAD_ROBOTS_REQUEST:
       return state.set('status', 'loading');
     case LOAD_ROBOTS_SUCCESS:
-      console.log(action)
       return state.set('status', 'loaded').set('activeRobots', action.payload.results);
     default:
       return state;
