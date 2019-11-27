@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import RobotsPage from '../Robots';
 
 

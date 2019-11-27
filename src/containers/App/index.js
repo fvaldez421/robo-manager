@@ -10,19 +10,18 @@ import { domain } from './constants';
 import { createListSelector } from './selectors';
 
 import SideNav from '../../components/SideNav';
-import '../../utils/resetStyles.css';
 import Routes from './Routes';
-
+import { GridContainer, FlexContainer } from '../../components/StyleHelpers';
 
 function App(props) {
   injectReducer(domain, reducer);
   const { status = 'initial', organizations, loadOrgs } = props;
   if (status === 'initial' && !organizations) loadOrgs();
   return (
-    <div className="App">
+    <FlexContainer dir='row'>
       <SideNav />
       <Routes />
-    </div>
+    </FlexContainer>
   );
 }
 
