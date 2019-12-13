@@ -21,7 +21,7 @@ const DropDownOption = ({ id, name, onSelect }) => (
   <div onClick={() => onSelect(id)}>
     {name}
   </div>
-)
+);
 
 
 export const DropDown = props => {

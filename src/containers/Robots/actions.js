@@ -13,7 +13,7 @@ export const getRobots = () => async dispatch => {
     payload: data
   });
   await get(
-    `https://cors-anywhere.herokuapp.com/${baseUrl}/people`,
+    `${baseUrl}/people`,
     success
   );
 }
